@@ -1,0 +1,20 @@
+{
+    "KPlugin": {
+        "Name": "Weather && Stats",
+        "Description": "Live weather and system stats for the KDE panel",
+        "Icon": "weather-clear",
+        "Id": "com.github.samjage.weatherstats",
+        "Version": "1.0",
+        "License": "GPL-2.0",
+        "Category": "System Information",
+        "Authors": [
+            {
+                "Name": "samjage",
+                "Email": ""
+            }
+        ],
+        "Website": "https://github.com/samjage/weather-and-stats"
+    },
+    "X-Plasma-API-Minimum-Version": "6.0",
+    "KPackageStructure": "Plasma/Applet"
+}
