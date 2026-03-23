@@ -46,7 +46,7 @@ Right-click the widget → **Configure Weather && Stats**:
 
 | Setting | Description | Default |
 |---|---|---|
-| Location | Search by city name (geocoded via Open-Meteo) | Canal Winchester, OH |
+| Location | Search by city name (geocoded via Open-Meteo) | Chicago, IL |
 | Temperature unit | °F or °C | °F |
 | Show condition text | Adds e.g. "Partly Cloudy" after the temp | Off |
 | Weather refresh | How often to fetch weather (minutes) | 5 min |
