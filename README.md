@@ -7,7 +7,8 @@ A KDE Plasma 6 panel widget that displays live weather and system stats in a sin
 ## What it shows
 
 ```
-⛅  72°F  Partly Cloudy  │    85°C     42%    61%  │  󰖟      󰁅  12.3 MB/s     󰁝  1.1 MB/s
+<img width="666" height="57" alt="weather-and-stats_example" src="https://github.com/user-attachments/assets/ce6bbd0f-3f6a-4624-abf0-01bb94db8d9b" />
+
 ```
 
 - **Weather** — current conditions via [Open-Meteo](https://open-meteo.com/) (no API key required)
