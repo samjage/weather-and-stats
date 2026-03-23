@@ -7,8 +7,8 @@ A KDE Plasma 6 panel widget that displays live weather and system stats in a sin
 ## What it shows
 
 ```
-<img width="666" height="57" alt="weather-and-stats_example" src="https://github.com/user-attachments/assets/ce6bbd0f-3f6a-4624-abf0-01bb94db8d9b" />
-
+[<img width="666" height="57" alt="weather-and-stats_example" src="https://github.com/user-attachments/assets/ce6bbd0f-3f6a-4624-abf0-01bb94db8d9b" />
+](https://private-user-images.githubusercontent.com/11218296/567482167-00d58726-ac7e-4cfd-94d5-1276a7345bf9.png?jwt=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3NzQyMjg0MTUsIm5iZiI6MTc3NDIyODExNSwicGF0aCI6Ii8xMTIxODI5Ni81Njc0ODIxNjctMDBkNTg3MjYtYWM3ZS00Y2ZkLTk0ZDUtMTI3NmE3MzQ1YmY5LnBuZz9YLUFtei1BbGdvcml0aG09QVdTNC1ITUFDLVNIQTI1NiZYLUFtei1DcmVkZW50aWFsPUFLSUFWQ09EWUxTQTUzUFFLNFpBJTJGMjAyNjAzMjMlMkZ1cy1lYXN0LTElMkZzMyUyRmF3czRfcmVxdWVzdCZYLUFtei1EYXRlPTIwMjYwMzIzVDAxMDgzNVomWC1BbXotRXhwaXJlcz0zMDAmWC1BbXotU2lnbmF0dXJlPTQwMGQ5ZTgwNWZjODNmZjY3Y2U4OTE2YjcyYjkzZDJjMTEzN2NjNTYwOGI3NjFlYjI2MjNhMDFmZDAxZWFlYWQmWC1BbXotU2lnbmVkSGVhZGVycz1ob3N0In0.Jcf8eQcDfdr_zVHpwY9w4Tr4E2SpuxuhTHUMirzUB9I)
 ```
 
 - **Weather** — current conditions via [Open-Meteo](https://open-meteo.com/) (no API key required)
