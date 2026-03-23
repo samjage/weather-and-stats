@@ -6,7 +6,7 @@ A KDE Plasma 6 panel widget that displays live weather and system stats in a sin
 
 ## Overview
 
-![Weather && Stats](https://private-user-images.githubusercontent.com/11218296/567482167-00d58726-ac7e-4cfd-94d5-1276a7345bf9.png?jwt=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3NzQyMjg1OTAsIm5iZiI6MTc3NDIyODI5MCwicGF0aCI6Ii8xMTIxODI5Ni81Njc0ODIxNjctMDBkNTg3MjYtYWM3ZS00Y2ZkLTk0ZDUtMTI3NmE3MzQ1YmY5LnBuZz9YLUFtei1BbGdvcml0aG09QVdTNC1ITUFDLVNIQTI1NiZYLUFtei1DcmVkZW50aWFsPUFLSUFWQ09EWUxTQTUzUFFLNFpBJTJGMjAyNjAzMjMlMkZ1cy1lYXN0LTElMkZzMyUyRmF3czRfcmVxdWVzdCZYLUFtei1EYXRlPTIwMjYwMzIzVDAxMTEzMFomWC1BbXotRXhwaXJlcz0zMDAmWC1BbXotU2lnbmF0dXJlPTliNzZjOTAzZmMxY2VmZDJlODc3YTNkMmQxODgzZTM4YTRhZDA1NTExZDUwMGMxZWM3ZmNjMTY5NTNjYTE0YmImWC1BbXotU2lnbmVkSGVhZGVycz1ob3N0In0.6pE1WkIcctxXsJMkG_mWTB5Lb99sbYYzRkZueInZ4qg)
+![Weather && Stats](weather-and-stats_example.png)
 
 
 - **Weather** — current conditions via [Open-Meteo](https://open-meteo.com/) (no API key required)
