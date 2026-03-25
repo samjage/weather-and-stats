@@ -21,9 +21,21 @@ PlasmoidItem {
     property bool   showCpuUsage:      Plasmoid.configuration.showCpuUsage  !== false
     property bool   showMemory:        Plasmoid.configuration.showMemory     !== false
     property bool   showNetwork:       Plasmoid.configuration.showNetwork    !== false
+    property bool   useNerdFont:       Plasmoid.configuration.useNerdFont    !== false
+
+    readonly property var ic: useNerdFont ? ({
+        cpuTemp: "\uf2c8", cpu: "\uf2db", mem: "\ue266",
+        down: "\uf063", up: "\uf062",
+        weather: { clear: "\ue30d", cloudy: "\ue312", fog: "\ue313", rain: "\ue318", snow: "\ue31a", storm: "\ue32e" }
+    }) : ({
+        cpuTemp: "\u0394", cpu: "\u2394", mem: "\u2630",
+        down: "\u2193", up: "\u2191",
+        weather: { clear: "\u2600\ufe0e", cloudy: "\u2601\ufe0e", fog: "\u2248", rain: "\u2602\ufe0e", snow: "\u2744\ufe0e", storm: "\u2607" }
+    })
 
     // ── Live state ────────────────────────────────────────────────────────────
-    property string weatherIcon:      ""
+    property int    weatherCode:      -1  // -1 = not yet fetched; computed binding keeps weatherIcon reactive to icon set changes
+    property string weatherIcon:      weatherCode >= 0 ? iconForCode(weatherCode) : ""
     property string temperature:      "--"
     property string weatherCondition: ""
     property int    cpuTempRaw:       -1
@@ -54,54 +66,86 @@ PlasmoidItem {
     // ── Panel display ─────────────────────────────────────────────────────────
     preferredRepresentation: fullRepresentation
 
-    fullRepresentation: PlasmaComponents.Label {
+    fullRepresentation: RowLayout {
         Layout.fillHeight: true
-        Layout.preferredWidth: implicitWidth + 16
-        verticalAlignment: Text.AlignVCenter
-        textFormat: Text.RichText
+        spacing: 0
 
-        text: {
-            // CPU temp is red when above threshold
-            var hot = root.cpuTempRaw > 0 && root.cpuTempRaw >= root.cpuTempThreshold
+        // ── Main label (weather + cpu/mem) ────────────────────────────────────
+        PlasmaComponents.Label {
+            Layout.fillHeight: true
+            Layout.preferredWidth: implicitWidth + 16
+            verticalAlignment: Text.AlignVCenter
+            textFormat: Text.RichText
 
-            // Weather section
-            var s = root.weatherIcon + "\u00a0\u00a0" + root.temperature + "°" + (root.fahrenheit ? "F" : "C")
-            if (root.showCondition && root.weatherCondition !== "")
-                s += "  " + root.weatherCondition
+            text: {
+                var hot = root.cpuTempRaw > 0 && root.cpuTempRaw >= root.cpuTempThreshold
+                var sp  = "\u00a0\u00a0\u00a0\u00a0"
+                var div = "\u00a0\u00a0\u2502\u00a0\u00a0"
 
-            // CPU + Memory stats
-            var cpuMem = []
-            if (root.showCpuTemp) {
-                var tempStr = "\uf2c8\u00a0\u00a0" + root.cpuTempDisplay
-                cpuMem.push(hot ? "<font color='#ff5555'>" + tempStr + "</font>" : tempStr)
+                var s = root.weatherIcon + "\u00a0\u00a0" + root.temperature + "°" + (root.fahrenheit ? "F" : "C")
+                if (root.showCondition && root.weatherCondition !== "")
+                    s += "  " + root.weatherCondition
+
+                var cpuMem = []
+                if (root.showCpuTemp) {
+                    var tempStr = root.ic.cpuTemp + "\u00a0\u00a0" + root.cpuTempDisplay
+                    cpuMem.push(hot ? "<font color='#ff5555'>" + tempStr + "</font>" : tempStr)
+                }
+                if (root.showCpuUsage)
+                    cpuMem.push(root.ic.cpu + "\u00a0\u00a0" + (root.cpuUsage >= 0 ? padPct(root.cpuUsage) : "\u00a0--"))
+                if (root.showMemory)
+                    cpuMem.push(root.ic.mem + "\u00a0\u00a0" + (root.memUsage >= 0 ? padPct(root.memUsage) : "\u00a0--"))
+
+                if (cpuMem.length > 0) s += div + cpuMem.join(sp)
+                if (root.showNetwork) s += div
+
+                return s
             }
-            if (root.showCpuUsage)
-                cpuMem.push("\uf2db\u00a0\u00a0" + (root.cpuUsage >= 0 ? padPct(root.cpuUsage) : "\u00a0--"))
-            if (root.showMemory)
-                cpuMem.push("\ue266\u00a0\u00a0" + (root.memUsage >= 0 ? padPct(root.memUsage) : "\u00a0--"))
+        }
 
-            var sp = "\u00a0\u00a0\u00a0\u00a0"
-            var div = "\u00a0\u00a0\u2502\u00a0\u00a0"
+        // ── Network ───────────────────────────────────────────────────────────
+        // A hidden reference label measures the pixel width of the widest
+        // possible value. Both visible labels are pinned to that exact width
+        // (min = preferred = max) so content changes never affect their size.
+        PlasmaComponents.Label {
+            id: netRef
+            visible: false
+            font.family: "monospace"
+            text: "000 MB/s"
+        }
 
-            if (cpuMem.length > 0) s += div + cpuMem.join(sp)
+        PlasmaComponents.Label {
+            visible: root.showNetwork
+            font.family: "monospace"
+            Layout.fillHeight: true
+            Layout.minimumWidth:   netRef.implicitWidth
+            Layout.preferredWidth: netRef.implicitWidth
+            Layout.maximumWidth:   netRef.implicitWidth
+            verticalAlignment: Text.AlignVCenter
+            text: root.ic.down + " " + formatNetSpeed(root.netDown)
+        }
 
-            // Network stats
-            if (root.showNetwork)
-                s += div + "\uf0ac" + sp + "\uf063\u00a0\u00a0" + formatNetSpeed(root.netDown) + sp + "\uf062\u00a0\u00a0" + formatNetSpeed(root.netUp)
-
-            return s + "  "
+        PlasmaComponents.Label {
+            visible: root.showNetwork
+            font.family: "monospace"
+            Layout.fillHeight: true
+            Layout.minimumWidth:   netRef.implicitWidth
+            Layout.preferredWidth: netRef.implicitWidth
+            Layout.maximumWidth:   netRef.implicitWidth
+            verticalAlignment: Text.AlignVCenter
+            text: "  " + root.ic.up + " " + formatNetSpeed(root.netUp) + "  "
         }
     }
 
     // ── Weather ───────────────────────────────────────────────────────────────
 
     function iconForCode(code) {
-        if (code === 0)                                return "\ue30d"
-        if (code <= 3)                                 return "\ue312"
-        if (code === 45 || code === 48)                return "\ue313"
-        if ([51,53,55,61,63,65].indexOf(code) >= 0)    return "\ue318"
-        if ([71,73,75].indexOf(code) >= 0)             return "\ue31a"
-        return "\ue32e"
+        if (code === 0)                                return ic.weather.clear
+        if (code <= 3)                                 return ic.weather.cloudy
+        if (code === 45 || code === 48)                return ic.weather.fog
+        if ([51,53,55,61,63,65].indexOf(code) >= 0)    return ic.weather.rain
+        if ([71,73,75].indexOf(code) >= 0)             return ic.weather.snow
+        return ic.weather.storm
     }
 
     function conditionForCode(code) {
@@ -132,7 +176,7 @@ PlasmoidItem {
             if (req.readyState === XMLHttpRequest.DONE && req.status === 200) {
                 var cw = JSON.parse(req.responseText).current_weather
                 root.temperature      = Math.round(cw.temperature).toString()
-                root.weatherIcon      = root.iconForCode(cw.weathercode)
+                root.weatherCode      = cw.weathercode
                 root.weatherCondition = root.conditionForCode(cw.weathercode)
             }
         }
