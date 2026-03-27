@@ -19,6 +19,7 @@ Item {
     property bool   cfg_showCpuUsage:      true
     property bool   cfg_showMemory:        true
     property bool   cfg_showNetwork:       true
+    property bool   cfg_useNerdFont:       true
 
     component SectionHeader: ColumnLayout {
         property string title: ""
@@ -203,6 +204,16 @@ Item {
                 checked: cfg_showNetwork
                 onToggled: cfg_showNetwork = checked
             }
+        }
+
+        // ── APPEARANCE ────────────────────────────────────────────────────────
+
+        SectionHeader { title: "APPEARANCE" }
+
+        QQC2.CheckBox {
+            text: "Use Nerd Font icons  (disable for plain Unicode fallback)"
+            checked: cfg_useNerdFont
+            onToggled: cfg_useNerdFont = checked
         }
 
         Item { Layout.fillHeight: true; Layout.minimumHeight: 16 }

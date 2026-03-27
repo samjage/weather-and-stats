@@ -44,5 +44,8 @@
         <entry name="showNetwork" type="Bool">
             <default>true</default>
         </entry>
+        <entry name="useNerdFont" type="Bool">
+            <default>true</default>
+        </entry>
     </group>
 </kcfg>
