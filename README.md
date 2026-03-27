@@ -29,7 +29,7 @@ All stats update on configurable intervals. Each section can be toggled on or of
 
 ```bash
 git clone https://github.com/samjage/weather-and-stats.git
-kpackagetool6 --install weather-and-stats
+kpackagetool6 --type Plasma/Applet --install weather-and-stats
 ```
 
 Then right-click your panel → **Add Widgets** → search for **Weather && Stats**.
@@ -37,7 +37,7 @@ Then right-click your panel → **Add Widgets** → search for **Weather && Stat
 ### To update after changes
 
 ```bash
-kpackagetool6 --upgrade weather-and-stats
+kpackagetool6 --type Plasma/Applet --upgrade weather-and-stats
 ```
 
 ## Configuration
