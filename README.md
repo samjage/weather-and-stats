@@ -4,7 +4,7 @@
 
 ![Plasma 6](https://img.shields.io/badge/Plasma-6.0+-blue) ![License](https://img.shields.io/badge/License-GPL--2.0-green) ![Version](https://img.shields.io/badge/Version-1.2-orange)
 
-<p align="center"> ![Weather && Stats](weather-and-stats_example.png) </p>
+<p align="center">![Weather && Stats](weather-and-stats_example.png)</p>
 
 ---
 
