@@ -1,6 +1,6 @@
 # Weather && Stats
 
-A KDE Plasma 6 panel widget that displays live weather and system stats in a single compact bar.
+A KDE Plasma 6 **panel/taskbar widget** that displays live weather and system stats in a single compact bar. Designed to sit in your top or bottom panel — not a desktop widget.
 
 ![Plasma 6](https://img.shields.io/badge/Plasma-6.0+-blue) ![License](https://img.shields.io/badge/License-GPL--2.0-green)
 
@@ -20,8 +20,8 @@ All stats update on configurable intervals. Each section can be toggled on or of
 ## Requirements
 
 - KDE Plasma 6.0+
-- A [Nerd Font](https://www.nerdfonts.com/) set as your panel font (for icons)
 - `bash`, `free`, `/proc/stat`, `/proc/net/dev` (standard on any Linux system)
+- A [Nerd Font](https://www.nerdfonts.com/) set as your panel font is **optional** — the widget falls back to plain Unicode symbols if disabled in settings
 
 ## Installation
 
@@ -33,6 +33,8 @@ kpackagetool6 --type Plasma/Applet --install weather-and-stats
 ```
 
 Then right-click your panel → **Add Widgets** → search for **Weather && Stats**.
+
+> **Placement:** Plasma always adds new widgets at a default position. After adding, right-click your panel → **Enter Edit Mode** and drag the widget to your preferred spot (e.g. left of the system tray). Plasma has no API for widgets to declare a position automatically.
 
 ### To update after changes
 
@@ -54,6 +56,7 @@ Right-click the widget → **Configure Weather && Stats**:
 | CPU temp alert threshold | Temp at which the reading turns red | 80°C |
 | Stats refresh | How often to poll system stats (seconds) | 3 sec |
 | Visible stats | Toggle CPU temp, CPU usage, memory, network | All on |
+| Use Nerd Font icons | Use Nerd Font glyphs; disable for plain Unicode fallback | On |
 
 ## How it works
 

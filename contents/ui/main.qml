@@ -66,74 +66,37 @@ PlasmoidItem {
     // ── Panel display ─────────────────────────────────────────────────────────
     preferredRepresentation: fullRepresentation
 
-    fullRepresentation: RowLayout {
+    fullRepresentation: PlasmaComponents.Label {
         Layout.fillHeight: true
-        spacing: 0
+        Layout.preferredWidth: implicitWidth + 16
+        verticalAlignment: Text.AlignVCenter
+        textFormat: Text.RichText
 
-        // ── Main label (weather + cpu/mem) ────────────────────────────────────
-        PlasmaComponents.Label {
-            Layout.fillHeight: true
-            Layout.preferredWidth: implicitWidth + 16
-            verticalAlignment: Text.AlignVCenter
-            textFormat: Text.RichText
+        text: {
+            var hot = root.cpuTempRaw > 0 && root.cpuTempRaw >= root.cpuTempThreshold
+            var sp  = "\u00a0\u00a0\u00a0\u00a0"
+            var div = "\u00a0\u00a0\u2502\u00a0\u00a0"
 
-            text: {
-                var hot = root.cpuTempRaw > 0 && root.cpuTempRaw >= root.cpuTempThreshold
-                var sp  = "\u00a0\u00a0\u00a0\u00a0"
-                var div = "\u00a0\u00a0\u2502\u00a0\u00a0"
+            var s = root.weatherIcon + "\u00a0\u00a0" + root.temperature + "°" + (root.fahrenheit ? "F" : "C")
+            if (root.showCondition && root.weatherCondition !== "")
+                s += "  " + root.weatherCondition
 
-                var s = root.weatherIcon + "\u00a0\u00a0" + root.temperature + "°" + (root.fahrenheit ? "F" : "C")
-                if (root.showCondition && root.weatherCondition !== "")
-                    s += "  " + root.weatherCondition
-
-                var cpuMem = []
-                if (root.showCpuTemp) {
-                    var tempStr = root.ic.cpuTemp + "\u00a0\u00a0" + root.cpuTempDisplay
-                    cpuMem.push(hot ? "<font color='#ff5555'>" + tempStr + "</font>" : tempStr)
-                }
-                if (root.showCpuUsage)
-                    cpuMem.push(root.ic.cpu + "\u00a0\u00a0" + (root.cpuUsage >= 0 ? padPct(root.cpuUsage) : "\u00a0--"))
-                if (root.showMemory)
-                    cpuMem.push(root.ic.mem + "\u00a0\u00a0" + (root.memUsage >= 0 ? padPct(root.memUsage) : "\u00a0--"))
-
-                if (cpuMem.length > 0) s += div + cpuMem.join(sp)
-                if (root.showNetwork) s += div
-
-                return s
+            var cpuMem = []
+            if (root.showCpuTemp) {
+                var tempStr = root.ic.cpuTemp + "\u00a0\u00a0" + root.cpuTempDisplay
+                cpuMem.push(hot ? "<font color='#ff5555'>" + tempStr + "</font>" : tempStr)
             }
-        }
+            if (root.showCpuUsage)
+                cpuMem.push(root.ic.cpu + "\u00a0\u00a0" + (root.cpuUsage >= 0 ? padPct(root.cpuUsage) : "\u00a0--"))
+            if (root.showMemory)
+                cpuMem.push(root.ic.mem + "\u00a0\u00a0" + (root.memUsage >= 0 ? padPct(root.memUsage) : "\u00a0--"))
 
-        // ── Network ───────────────────────────────────────────────────────────
-        // A hidden reference label measures the pixel width of the widest
-        // possible value. Both visible labels are pinned to that exact width
-        // (min = preferred = max) so content changes never affect their size.
-        PlasmaComponents.Label {
-            id: netRef
-            visible: false
-            font.family: "monospace"
-            text: "000 MB/s"
-        }
+            if (cpuMem.length > 0) s += div + cpuMem.join(sp)
 
-        PlasmaComponents.Label {
-            visible: root.showNetwork
-            font.family: "monospace"
-            Layout.fillHeight: true
-            Layout.minimumWidth:   netRef.implicitWidth
-            Layout.preferredWidth: netRef.implicitWidth
-            Layout.maximumWidth:   netRef.implicitWidth
-            verticalAlignment: Text.AlignVCenter
-            text: root.ic.down + " " + formatNetSpeed(root.netDown)
-        }
+            if (root.showNetwork)
+                s += div + root.ic.down + "\u00a0\u00a0" + formatNetSpeed(root.netDown) + sp + root.ic.up + "\u00a0\u00a0" + formatNetSpeed(root.netUp)
 
-        PlasmaComponents.Label {
-            visible: root.showNetwork
-            font.family: "monospace"
-            Layout.fillHeight: true
-            Layout.minimumWidth:   netRef.implicitWidth
-            Layout.preferredWidth: netRef.implicitWidth
-            Layout.maximumWidth:   netRef.implicitWidth
-            verticalAlignment: Text.AlignVCenter
-            text: "  " + root.ic.up + " " + formatNetSpeed(root.netUp) + "  "
+            return s + "  "
         }
     }
 
