@@ -88,9 +88,11 @@ Right-click the widget → **Configure Weather && Stats**
 
 Weather is fetched via `XMLHttpRequest` — no API key, no account needed. [Open-Meteo](https://open-meteo.com/) is free for non-commercial use.
 
-System stats come from `contents/stats.sh`, a small shell script the widget runs on a timer. 
-It takes two `/proc/stat` samples 1 second apart to calculate CPU usage and reads `/proc/net/dev` for network throughput. 
-No external dependencies beyond standard Linux interfaces.
+---
+
+> System stats come from `contents/stats.sh`, a small shell script the widget runs on a timer. 
+> It takes two `/proc/stat` samples 1 second apart to calculate CPU usage and reads `/proc/net/dev` for network throughput. 
+> No external dependencies beyond standard Linux interfaces.
 
 ---
 
