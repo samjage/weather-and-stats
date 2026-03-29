@@ -1,3 +1,7 @@
+<p align="center">
+  <img src="https://raw.githubusercontent.com/samjage/weather-and-stats/master/weather-and-stats.png">
+</p>
+
 # Weather && Stats
 
 > A KDE Plasma 6 **panel/taskbar widget** displaying live weather and system stats in a single compact bar. Designed to sit in your top or bottom panel — not a desktop widget.
