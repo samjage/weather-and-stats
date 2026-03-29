@@ -8,6 +8,9 @@
 
 ---
 
+![Install on KDE](https://img.shields.io/badge/Install%20on-KDE%20Store-blue?logo=
+  kde)](https://store.kde.org/p/2353181)
+
 ## Stats
 
 | Stat | Details |
