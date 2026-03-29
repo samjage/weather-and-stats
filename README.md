@@ -8,8 +8,7 @@
 
 ---
 
-[![Install on KDE Store](https://img.shields.io/badge/Install%20on-KDE%20Store-1d99
-  f3?logo=kde&logoColor=white)](https://store.kde.org/p/2353181)
+[![Install on KDE Store](https://img.shields.io/badge/Install%20on-KDE%20Store-1d99f3?logo=kde&logoColor=white)](https://store.kde.org/p/2353181)
 
   > Install via **Get New Widgets** in Plasma for automatic updates, or clone
   manually with git.
