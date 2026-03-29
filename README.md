@@ -1,4 +1,4 @@
-<p align="center">
+<p align="Left">
   <img src="https://raw.githubusercontent.com/samjage/weather-and-stats/master/weather-and-stats.png">
 </p>
 
