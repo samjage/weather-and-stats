@@ -8,8 +8,11 @@
 
 ---
 
-![Install on KDE](https://img.shields.io/badge/Install%20on-KDE%20Store-blue?logo=
-  kde)](https://store.kde.org/p/2353181)
+[![Install on KDE Store](https://img.shields.io/badge/Install%20on-KDE%20Store-1d99
+  f3)](https://store.kde.org/p/2353181)
+
+  > Install via **Get New Widgets** in Plasma for automatic updates, or clone
+  manually with git.
 
 ## Stats
 
