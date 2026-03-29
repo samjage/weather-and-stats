@@ -2,7 +2,7 @@
     "KPlugin": {
         "Name": "Weather && Stats",
         "Description": "Live weather and system stats for the KDE panel",
-        "Icon": "weather-clear",
+        "Icon": "weather-and-stats",
         "Id": "com.github.samjage.weatherstats",
         "Version": "1.1",
         "License": "GPL-2.0",
