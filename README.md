@@ -69,7 +69,7 @@ kpackagetool6 --type Plasma/Applet --upgrade weather-and-stats
 
 ## Configuration
 
-Right-click the widget → **Configure Weather && Stats**
+Right-click the widget → **Configure Weather and Stats**
 
 ### Weather
 
