@@ -6,12 +6,7 @@
 
 > A KDE Plasma 6 **panel/taskbar widget** displaying live weather and system stats in a single compact bar. Designed to sit in your top or bottom panel — not a desktop widget.
 
-![Plasma 6](https://img.shields.io/badge/Plasma-6.0+-blue) ![License](https://img.shields.io/badge/License-GPL--2.0-green) ![Version](https://img.shields.io/badge/Version-1.2-orange)
-
-
-[![GitHub Release](https://img.shields.io/github/v/release/samjage/Weather-and-Stats)](https://github.com/samjage/weather-and-stats/releases/latest)
-[![GitHub Downloads (latest)](https://img.shields.io/github/downloads/samjage/Weather-and-Stats/latest/total?style=flat&logo=github)](https://github.com/samjage/Weather-and-Stats/releases/latest) 
-[![GitHub stars](https://img.shields.io/github/stars/samjage/Uplink-Manager?style=flat&logo=github)](https://github.com/samjage/Uplink-Manager/stargazers)
+![Plasma 6](https://img.shields.io/badge/Plasma-6.0+-blue) ![License](https://img.shields.io/badge/License-GPL--2.0-green) [![GitHub Release](https://img.shields.io/github/v/release/samjage/Weather-and-Stats)](https://github.com/samjage/weather-and-stats/releases/latest) [![GitHub Downloads (latest)](https://img.shields.io/github/downloads/samjage/Weather-and-Stats/latest/total?style=flat&logo=github)](https://github.com/samjage/Weather-and-Stats/releases/latest) [![GitHub stars](https://img.shields.io/github/stars/samjage/Uplink-Manager?style=flat&logo=github)](https://github.com/samjage/Uplink-Manager/stargazers)
 ---
 
 <p align="center">
