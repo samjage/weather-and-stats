@@ -9,7 +9,7 @@
 ![Plasma 6](https://img.shields.io/badge/Plasma-6.0+-blue) ![License](https://img.shields.io/badge/License-GPL--2.0-green) ![Version](https://img.shields.io/badge/Version-1.2-orange)
 
 
-![GitHub Release](https://img.shields.io/github/v/release/samjage/Weather-and-Stats)
+[![GitHub Release](https://img.shields.io/github/v/release/samjage/Weather-and-Stats)](https://github.com/samjage/weather-and-stats/releases/tag/stats)
 [![GitHub Downloads (latest)](https://img.shields.io/github/downloads/samjage/Weather-and-Stats/latest/total?style=flat-square&logo=github)](https://github.com/samjage/Weather-and-Stats/releases/latest) 
 [![GitHub stars](https://img.shields.io/github/stars/samjage/Uplink-Manager?style=flat-square&logo=github)](https://github.com/samjage/Uplink-Manager/stargazers)
 ---
