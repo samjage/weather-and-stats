@@ -55,7 +55,7 @@ git clone https://github.com/samjage/weather-and-stats.git
 kpackagetool6 --type Plasma/Applet --install weather-and-stats
 ```
 
-Then right-click your panel → **Add Widgets** → search for **Weather && Stats**.
+Then right-click your panel → **Add Widgets** → search for **Weather and Stats**.
 
 > **Placement:** Plasma always adds new widgets at a default position. After adding, right-click your panel → **Enter Edit Mode** and drag the widget to your preferred spot (e.g. left of the system tray). Plasma has no API for widgets to declare a position automatically.
 
