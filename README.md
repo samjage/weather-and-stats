@@ -10,8 +10,8 @@
 
 
 [![GitHub Release](https://img.shields.io/github/v/release/samjage/Weather-and-Stats)](https://github.com/samjage/weather-and-stats/releases/tag/stats)
-[![GitHub Downloads (latest)](https://img.shields.io/github/downloads/samjage/Weather-and-Stats/latest/total?style=flat-square&logo=github)](https://github.com/samjage/Weather-and-Stats/releases/latest) 
-[![GitHub stars](https://img.shields.io/github/stars/samjage/Uplink-Manager?style=flat-square&logo=github)](https://github.com/samjage/Uplink-Manager/stargazers)
+[![GitHub Downloads (latest)](https://img.shields.io/github/downloads/samjage/Weather-and-Stats/latest/total?style=flat&logo=github)](https://github.com/samjage/Weather-and-Stats/releases/latest) 
+[![GitHub stars](https://img.shields.io/github/stars/samjage/Uplink-Manager?style=flat&logo=github)](https://github.com/samjage/Uplink-Manager/stargazers)
 ---
 
 <p align="center">
