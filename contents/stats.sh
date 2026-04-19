@@ -33,7 +33,7 @@ IFACE=$(awk 'NR>2{gsub(/:$/,"",$1); if($1!="lo") print $1, ($2+0)+($10+0)}' /pro
 [ -z "$IFACE" ] && IFACE="lo"
 
 # Helper functions for sampling
-get_cpu()  { awk 'NR==1{t=0; for(i=2;i<=NF;i++) t+=$i; print t, $6}' /proc/stat; }
+get_cpu()  { awk 'NR==1{t=0; for(i=2;i<=NF;i++) t+=$i; print t, $5}' /proc/stat; }
 get_net()  { awk -v d="$IFACE:" '$1==d{print $2, $10}' /proc/net/dev; }
 
 # First samples

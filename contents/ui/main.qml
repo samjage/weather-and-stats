@@ -77,7 +77,7 @@ PlasmoidItem {
             var sp  = "\u00a0\u00a0\u00a0\u00a0"
             var div = "\u00a0\u00a0\u2502\u00a0\u00a0"
 
-            var s = root.weatherIcon + "\u00a0\u00a0" + root.temperature + "°" + (root.fahrenheit ? "F" : "C")
+            var s = "&nbsp;&nbsp;" + root.weatherIcon + "\u00a0\u00a0" + root.temperature + "°" + (root.fahrenheit ? "F" : "C")
             if (root.showCondition && root.weatherCondition !== "")
                 s += "  " + root.weatherCondition
 
