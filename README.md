@@ -94,6 +94,8 @@ Right-click the widget → **Configure Weather and Stats**
 | Setting | Description | Default |
 |---|---|---|
 | Nerd Font icons | Disable for plain Unicode symbol fallback | On |
+| Font size | Set a custom point size for the panel text | Auto |
+| Stat order | Reorder stats left to right using ↑ ↓ buttons | Weather, CPU Temp, CPU Usage, Memory, Network |
 
 ---
 
