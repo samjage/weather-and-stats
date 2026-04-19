@@ -47,5 +47,11 @@
         <entry name="useNerdFont" type="Bool">
             <default>true</default>
         </entry>
+        <entry name="fontSize" type="Int">
+            <default>0</default>
+        </entry>
+        <entry name="statOrder" type="String">
+            <default>weather,cputemp,cpuusage,memory,network</default>
+        </entry>
     </group>
 </kcfg>

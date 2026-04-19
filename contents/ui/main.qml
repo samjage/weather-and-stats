@@ -22,6 +22,8 @@ PlasmoidItem {
     property bool   showMemory:        Plasmoid.configuration.showMemory     !== false
     property bool   showNetwork:       Plasmoid.configuration.showNetwork    !== false
     property bool   useNerdFont:       Plasmoid.configuration.useNerdFont    !== false
+    property int    fontSize:          Plasmoid.configuration.fontSize        || 0
+    property string statOrder:         Plasmoid.configuration.statOrder       || "weather,cputemp,cpuusage,memory,network"
 
     readonly property var ic: useNerdFont ? ({
         cpuTemp: "\uf2c8", cpu: "\uf2db", mem: "\ue266",
@@ -71,32 +73,37 @@ PlasmoidItem {
         Layout.preferredWidth: implicitWidth + 16
         verticalAlignment: Text.AlignVCenter
         textFormat: Text.RichText
+        leftPadding: 6
+        font.pointSize: root.fontSize > 0 ? root.fontSize : Kirigami.Theme.defaultFont.pointSize
 
         text: {
             var hot = root.cpuTempRaw > 0 && root.cpuTempRaw >= root.cpuTempThreshold
             var sp  = "\u00a0\u00a0\u00a0\u00a0"
             var div = "\u00a0\u00a0\u2502\u00a0\u00a0"
 
-            var s = root.weatherIcon + "\u00a0\u00a0" + root.temperature + "°" + (root.fahrenheit ? "F" : "C")
-            if (root.showCondition && root.weatherCondition !== "")
-                s += "  " + root.weatherCondition
+            var order = root.statOrder.split(",")
+            var segments = []
 
-            var cpuMem = []
-            if (root.showCpuTemp) {
-                var tempStr = root.ic.cpuTemp + "\u00a0\u00a0" + root.cpuTempDisplay
-                cpuMem.push(hot ? "<font color='#ff5555'>" + tempStr + "</font>" : tempStr)
+            for (var i = 0; i < order.length; i++) {
+                var key = order[i].trim()
+                if (key === "weather") {
+                    var seg = root.weatherIcon + "\u00a0\u00a0" + root.temperature + "°" + (root.fahrenheit ? "F" : "C")
+                    if (root.showCondition && root.weatherCondition !== "")
+                        seg += "  " + root.weatherCondition
+                    segments.push(seg)
+                } else if (key === "cputemp" && root.showCpuTemp) {
+                    var tempStr = root.ic.cpuTemp + "\u00a0\u00a0" + root.cpuTempDisplay
+                    segments.push(hot ? "<font color='#ff5555'>" + tempStr + "</font>" : tempStr)
+                } else if (key === "cpuusage" && root.showCpuUsage) {
+                    segments.push(root.ic.cpu + "\u00a0\u00a0" + (root.cpuUsage >= 0 ? padPct(root.cpuUsage) : "\u00a0--"))
+                } else if (key === "memory" && root.showMemory) {
+                    segments.push(root.ic.mem + "\u00a0\u00a0" + (root.memUsage >= 0 ? padPct(root.memUsage) : "\u00a0--"))
+                } else if (key === "network" && root.showNetwork) {
+                    segments.push(root.ic.down + "\u00a0\u00a0" + formatNetSpeed(root.netDown) + sp + root.ic.up + "\u00a0\u00a0" + formatNetSpeed(root.netUp))
+                }
             }
-            if (root.showCpuUsage)
-                cpuMem.push(root.ic.cpu + "\u00a0\u00a0" + (root.cpuUsage >= 0 ? padPct(root.cpuUsage) : "\u00a0--"))
-            if (root.showMemory)
-                cpuMem.push(root.ic.mem + "\u00a0\u00a0" + (root.memUsage >= 0 ? padPct(root.memUsage) : "\u00a0--"))
 
-            if (cpuMem.length > 0) s += div + cpuMem.join(sp)
-
-            if (root.showNetwork)
-                s += div + root.ic.down + "\u00a0\u00a0" + formatNetSpeed(root.netDown) + sp + root.ic.up + "\u00a0\u00a0" + formatNetSpeed(root.netUp)
-
-            return s + "  "
+            return segments.join(div) + "  "
         }
     }
 
